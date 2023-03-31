@@ -1,11 +1,27 @@
 #Region ;**** Directives created by AutoIt3Wrapper_GUI ****
 #AutoIt3Wrapper_Icon=Untitled.ico
-#AutoIt3Wrapper_Outfile_x64=getlinker.exe
+#AutoIt3Wrapper_Outfile=getlinker.exe
+#AutoIt3Wrapper_Outfile_x64=getlinker_X64.exe
+#AutoIt3Wrapper_Compile_Both=y
+#AutoIt3Wrapper_Res_Comment=提取各种链接及提取文本
+#AutoIt3Wrapper_Res_Description=getlinker
+#AutoIt3Wrapper_Res_Fileversion=1.0.0.0
+#AutoIt3Wrapper_Res_ProductName=getlinker
+#AutoIt3Wrapper_Res_ProductVersion=1.0
+#AutoIt3Wrapper_Res_CompanyName=homemade
+#AutoIt3Wrapper_Res_LegalCopyright=no
+#AutoIt3Wrapper_Res_LegalTradeMarks=no
+#AutoIt3Wrapper_Res_Language=2052
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
+#NoTrayIcon
 ;取链儿.au3
 
 #include "getlinker.isf"
 #include <Array.au3>
+#include <Misc.au3>
+_Singleton ( "getlinker" , 0 )
+
+
 
 Global $cl = 'magnet\:\?xt\=urn\:btih\:[a-fA-F0-9]{40}';'(/^magnet:\?xt=urn:btih:[0-9a-fA-F]{40,}.*$/)'
 Global $ed = 'ed2k\:\/\/\|file\|.+?\|\d{1,}\|[0-9a-fA-F]{32}.*?\|\/'
@@ -13,7 +29,7 @@ Global $sha = '115\:\/\/.+?\|\d+\|[0-9a-fA-F]{40}\|[0-9a-fA-F]{40}'
 Global $url = 'https?\:\/\/.+'
 
 GUISetState(@SW_SHOW, $getlinker)
-
+getclip()
     ; Loop until the user exits.
     While 1
         Switch GUIGetMsg()
