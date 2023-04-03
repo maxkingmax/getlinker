@@ -1,3 +1,4 @@
+#NoTrayIcon
 #Region ;**** Directives created by AutoIt3Wrapper_GUI ****
 #AutoIt3Wrapper_Icon=Untitled.ico
 #AutoIt3Wrapper_Outfile=getlinker.exe
@@ -5,7 +6,7 @@
 #AutoIt3Wrapper_Compile_Both=y
 #AutoIt3Wrapper_Res_Comment=提取各种链接及提取文本
 #AutoIt3Wrapper_Res_Description=getlinker
-#AutoIt3Wrapper_Res_Fileversion=1.0.0.0
+#AutoIt3Wrapper_Res_Fileversion=1.0.0.1
 #AutoIt3Wrapper_Res_ProductName=getlinker
 #AutoIt3Wrapper_Res_ProductVersion=1.0
 #AutoIt3Wrapper_Res_CompanyName=homemade
@@ -13,7 +14,6 @@
 #AutoIt3Wrapper_Res_LegalTradeMarks=no
 #AutoIt3Wrapper_Res_Language=2052
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
-#NoTrayIcon
 ;取链儿.au3
 
 #include "getlinker.isf"
@@ -30,6 +30,7 @@ Global $url = 'https?\:\/\/.+'
 
 GUISetState(@SW_SHOW, $getlinker)
 getclip()
+getlink()
     ; Loop until the user exits.
     While 1
         Switch GUIGetMsg()
@@ -39,6 +40,8 @@ getclip()
 				getclip()
 			case $open
 				openfile()
+			Case $qk
+				qk()
 			Case $save
 					writefile()
 			Case $getlink
@@ -93,6 +96,11 @@ Func writefile()
 		fileclose($sfile)
 	EndIf
 EndFunc
+Func qk()
+guictrlsetdata($txt, "")
+guictrlsetdata($link, "")
+EndFunc
+
 
 func getlink()
 	local $templist[1] 
